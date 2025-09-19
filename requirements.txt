@@ -1,0 +1,80 @@
+# Core Streamlit stack
+streamlit==1.49.1
+pandas==2.3.2
+numpy==1.26.4
+
+matplotlib
+plotly==6.3.0
+pydeck==0.9.1
+google-generativeai==0.4.1
+firebase-admin==6.4.0
+
+
+# Supabase integration
+supabase==2.18.1
+supabase_auth==2.12.3
+supabase_functions==0.10.1
+postgrest==1.1.1
+realtime==2.7.0
+storage3==0.12.1
+
+# OpenAI + OAuth
+openai==1.107.3
+oauthlib==3.3.1
+requests-oauthlib==2.0.0
+PyJWT==2.10.1
+
+# Markdown rendering
+Markdown==3.8.2
+markdown-it-py==3.0.0
+mdurl==0.1.2
+MarkupSafe==3.0.2
+rich==14.1.0
+Pygments==2.19.2
+
+# Data + utility
+python-dateutil==2.9.0.post0
+pytz==2025.2
+typing_extensions==4.15.0
+typing-inspection==0.4.1
+tqdm==4.67.1
+watchdog==6.0.0
+toml==0.10.2
+packaging==25.0
+python-dotenv==1.1.1  # ✅ Added to fix load_dotenv crash
+
+# Pydantic stack
+pydantic==2.11.9
+pydantic_core==2.33.2
+referencing==0.36.2
+rpds-py==0.27.1
+
+# Optional ML (safe for cloud)
+ml_dtypes==0.5.3
+opt_einsum==3.4.0
+optree==0.17.0
+absl-py==2.3.1
+
+# Web + async
+websockets==15.0.1
+sniffio==1.3.1
+tenacity==9.1.2
+requests==2.32.4
+urllib3==2.5.0
+
+# Optional extras (safe to remove if unused)
+namex==0.1.0
+narwhals==2.5.0
+StrEnum==0.4.15
+smmap==5.0.2
+rsa==4.9.1
+wrapt==1.17.2
+Werkzeug==3.1.3
+pillow==11.3.0
+pyarrow==21.0.0
+pyasn1==0.6.1
+pyasn1_modules==0.4.2
+termcolor==3.1.0
+libclang==18.1.1  # risky—remove if not using TF ops
+
+
