@@ -39,12 +39,13 @@ Entry:
 
         if output:
             for line in output.split("\n"):
-                if line.lower().startswith("mood:"):
+                if "mood:" in line.lower():
                     mood = line.split(":", 1)[1].strip().lower()
-                elif line.lower().startswith("feedback:"):
+                elif "feedback:" in line.lower():
                     feedback = line.split(":", 1)[1].strip()
                     feedback = feedback.lstrip("1234567890.:- ").strip()
 
+        # Save to Firestore
         entry_id = str(uuid.uuid4())
         db.collection("journals").document(entry_id).set({
             "id": entry_id,
@@ -63,14 +64,15 @@ Entry:
 # 🎯 Affirmation generator for booster page
 def generate_affirmation(mood):
     prompt = f"Give a one-sentence affirmation for someone feeling {mood}."
-    return generate_content(prompt) or "You're doing your best—keep going."
+    response = generate_content(prompt)
+    return response or "You're doing your best—keep going."
 
 # 🌟 Affirmation + Goal generator for journal page
 def generate_affirmation_and_goal(entry, persona_name):
     prompt = (
         f"Based on this journal entry: '{entry}', generate a personalized affirmation "
         f"and one weekly goal for the user named {persona_name}. Format the response as:\n"
-        f"'Affirmation: ...'\n'Weekly Goal: ...'"
+        f"Affirmation: ...\nWeekly Goal: ..."
     )
     response = generate_content(prompt)
     return response or "Affirmation: You're doing great.\nWeekly Goal: Stay consistent and reflect daily."
@@ -81,4 +83,5 @@ def generate_comfort_story(recipe_name, mood):
         f"Write a short, cozy story about someone feeling {mood} and making {recipe_name} to feel better. "
         f"Make it warm, personal, and emotionally uplifting."
     )
-    return generate_content(prompt) or f"Someone feeling {mood} found comfort in making {recipe_name}—a simple joy that lifted their spirits."
+    response = generate_content(prompt)
+    return response or f"Someone feeling {mood} found comfort in making {recipe_name}—a simple joy that lifted their spirits."
